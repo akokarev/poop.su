@@ -1,26 +1,14 @@
 Write-Host 'Script poop.su loaded'
 
-# Определяем URL скрипта
-$source = $MyInvocation.MyCommand.Definition
-
-$hostName = ([uri]$source).Host
-
 # Конфигурация папок
-$config = @{
-    "dog.poop.su" = @{ folder="dogs"; max=4 }
-    "cat.poop.su" = @{ folder="cats"; max=2 }
-}
-
-if(!$config.ContainsKey($hostName)){
-    folder="dogs"; max=4
-}
-
-$conf = $config[$hostName]
+$conf = @{ folder="dogs"; max=4 }
 
 # случайная картинка
 $n = Get-Random -Minimum 1 -Maximum ($conf.max + 1)
 
-$imgUrl = "https://$hostName/$($conf.folder)/$n.jpg"
+Write-Host "$($conf.folder)/$n.jpg"
+
+$imgUrl = "https://poop.su/$($conf.folder)/$n.jpg"
 $imgPath = "$env:TEMP\$($conf.folder)_$n.jpg"
 
 Invoke-WebRequest $imgUrl -OutFile $imgPath
