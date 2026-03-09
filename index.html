@@ -7,12 +7,12 @@ $hostName = ([uri]$source).Host
 
 # Конфигурация папок
 $config = @{
-    "dog.poop.su" = @{ folder="dogs"; max=3 }
+    "dog.poop.su" = @{ folder="dogs"; max=4 }
     "cat.poop.su" = @{ folder="cats"; max=2 }
 }
 
 if(!$config.ContainsKey($hostName)){
-    folder="default"; max=3
+    folder="dogs"; max=4
 }
 
 $conf = $config[$hostName]
