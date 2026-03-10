@@ -25,3 +25,5 @@ public class W{
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name WallpaperStyle -Value 10
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name TileWallpaper -Value 0
 [W]::SystemParametersInfo(20,0,$imgPath,3)
+
+Write-Host 'Done!'
